@@ -6,7 +6,7 @@
 ### Purpose
 - To show python programmers a way to control their program while it is being used by others.
 
-### Scenerios
+### Scenarios
 - Live analytics
 - Alert the user
 - Remove the app from a user
