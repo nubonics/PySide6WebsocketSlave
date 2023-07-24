@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "pyside6websocketslave"
+version = "0.1.0"
+description = ""
+authors = ["nubonix <nubonix@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.12"
+fastapi = "^0.100.0"
+PySide6 = "^6.5.1.1"
+uvicorn = "^0.23.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

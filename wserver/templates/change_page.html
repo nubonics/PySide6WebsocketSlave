@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/change_page.css' %}">
+    <title>Page Switching</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to <br>Page Switching</h1>
+        <p>Select a page number from the dropdown to switch pages:</p>
+
+        <form id="pageForm" action="/switch_page" method="post">
+            <label for="page_number">Page Number:</label>
+            <select id="page_number" name="page_number">
+                <option value="1">Page 1</option>
+                <option value="2">Page 2</option>
+            </select>
+            <button type="submit">Switch Page</button>
+        </form>
+
+        <div id="message" style="display: none; color: green; font-weight: bold; margin-top: 10px;">
+            Switched user(s) gui to page number <span id="pageNumberDisplay"></span>
+        </div>
+
+        <script>
+            const form = document.getElementById('pageForm');
+            const message = document.getElementById('message');
+            const pageNumberDisplay = document.getElementById('pageNumberDisplay');
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: formData
+                });
+
+                if (response.ok) {
+                    // Get the selected page number and update the message
+                    pageNumberDisplay.textContent = formData.get('page_number');
+                    message.style.display = 'block';
+                    setTimeout(() => {
+                        message.style.display = 'none';
+                    }, 3000); // Hide the message after 3 seconds
+                }
+            });
+        </script>
+    </div>
+</body>
+</html>
